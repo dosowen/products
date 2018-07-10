@@ -15,10 +15,15 @@ with open ('products.csv', 'w') as f:
 		f.write(p2[0] + ',' + p2[1] + '\n')
 
 k=[]
-with open ('products.csv', 'r',encoding='big5') as f:
-	for line in f:
-		if '商品,價格' in line:
-			continue
-		name,price = line.strip().split(',')
-		k.append([name, price])
-print(k)
+import os
+if os.path.isfile('products.csv'):
+	print('yeah ,I found it!!!')
+	with open ('products.csv', 'r',encoding='big5') as f:
+		for line in f:
+			if '商品,價格' in line:
+				continue
+			name,price = line.strip().split(',')
+			k.append([name, price])
+	print(k)
+else:
+	print('I did not found it!!!!!')
